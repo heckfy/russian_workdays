@@ -1,24 +1,55 @@
-# RussianWorkdays
+# russian_workdays
 
-TODO: Write a gem description
+Производственный календарь РФ
 
-## Installation
+## Установка
+Выполняем в терминале:
 
-Add this line to your application's Gemfile:
+	gem install russian_workdays
+	
+и подгружаем:
 
-    gem 'russian_workdays'
+```ruby
+require 'russian_workdays'
+```
 
-And then execute:
+## Использование
 
-    $ bundle
+Получить массив с выходными днями в 2014 году
 
-Or install it yourself as:
+```ruby
+RussianWorkdays.holidays(2014)
+```
 
-    $ gem install russian_workdays
+Получить массив с короткими днями в 2014 году
 
-## Usage
+```ruby
+RussianWorkdays.shorts(2014)
+```
 
-TODO: Write usage instructions here
+Получить массив с рабочими днями в 2014 году
+
+```ruby
+RussianWorkdays.works(2014)
+```
+
+Является ли дата выходным днем?
+
+```ruby
+RussianWorkdays.holiday?(Date.new 2014, 10, 5))
+```
+
+Является ли дата коротким днем?
+
+```ruby
+RussianWorkdays.short?(Date.new 2014, 10, 5))
+```
+
+Является ли дата рабочим днем?
+
+```ruby
+RussianWorkdays.work?(Date.new 2014, 10, 5))
+```
 
 ## Contributing
 
