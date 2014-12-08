@@ -21,19 +21,19 @@ describe RussianWorkdays do
 
   it 'should return true if date is short day' do
     @shorts.each do |date|
-      expect(RussianWorkdays.short?(Date.parse date)).to eq(true)
+      expect(RussianWorkdays.short?(Date.parse(date))).to eq(true)
     end
   end
 
   it 'should return true if date is holiday day' do
     @holidays.each do |date|
-      expect(RussianWorkdays.holiday?(Date.parse date)).to eq(true)
+      expect(RussianWorkdays.holiday?(Date.parse(date))).to eq(true)
     end
   end
 
   it 'should return true if date is work day' do
     @works.each do |date|
-      expect(RussianWorkdays.work?(Date.parse date)).to eq(true)
+      expect(RussianWorkdays.work?(Date.parse(date))).to eq(true)
     end
   end
 end

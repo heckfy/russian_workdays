@@ -1,16 +1,15 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'russian_workdays/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'russian_workdays'
-  spec.version       = RussianWorkdays::VERSION
+  spec.version       = '1.0.0'
   spec.authors       = ['heckfy']
   spec.email         = ['heckfyoz@gmail.com']
   spec.summary       = 'Russian workdays'
-  spec.description   = ''
-  spec.homepage      = ''
+  spec.description   = 'Производственный календарь РФ'
+  spec.homepage      = 'https://github.com/heckfy/russian_workdays'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files -z`.split("\x0")
