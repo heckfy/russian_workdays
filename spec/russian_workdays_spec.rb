@@ -36,4 +36,22 @@ describe RussianWorkdays do
       expect(RussianWorkdays.work?(Date.parse(date))).to eq(true)
     end
   end
+  
+  it 'should return array of Date for holidays' do
+    RussianWorkdays.holidays(2014).each do |date|
+      expect(date.is_a?(Date)).to eq(true)
+    end
+  end
+  
+  it 'should return array of Date for works' do
+    RussianWorkdays.works(2014).each do |date|
+      expect(date.is_a?(Date)).to eq(true)
+    end
+  end
+  
+  it 'should return array of Date for shorts' do
+    RussianWorkdays.shorts(2014).each do |date|
+      expect(date.is_a?(Date)).to eq(true)
+    end
+  end
 end
