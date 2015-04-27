@@ -54,4 +54,9 @@ describe RussianWorkdays do
       expect(date.is_a?(Date)).to eq(true)
     end
   end
+
+  it 'should process shot day like work day' do
+      expect(RussianWorkdays.short?(Date.new(2015, 5, 8))).to eq(true)
+      expect(RussianWorkdays.work?(Date.new(2015, 5, 8))).to eq(true)
+  end
 end

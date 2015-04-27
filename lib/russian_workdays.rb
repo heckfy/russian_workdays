@@ -16,7 +16,7 @@ class RussianWorkdays
 
     def work?(date)
       raise ArgumentError unless date.is_a?(Date)
-      !holidays(date.year).include?(date) && !shorts(date.year).include?(date)
+      !holidays(date.year).include?(date) #&& !shorts(date.year).include?(date)
     end
 
     def works(year)
