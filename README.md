@@ -36,19 +36,19 @@ RussianWorkdays.works(2014)
 Является ли дата выходным днем?
 
 ```ruby
-RussianWorkdays.holiday?(Date.new 2014, 10, 5))
+RussianWorkdays.holiday?(Date.new 2014, 10, 5)
 ```
 
 Является ли дата коротким днем?
 
 ```ruby
-RussianWorkdays.short?(Date.new 2014, 10, 5))
+RussianWorkdays.short?(Date.new 2014, 10, 5)
 ```
 
 Является ли дата рабочим днем?
 
 ```ruby
-RussianWorkdays.work?(Date.new 2014, 10, 5))
+RussianWorkdays.work?(Date.new 2014, 10, 5)
 ```
 
 ## Contributing
