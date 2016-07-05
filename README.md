@@ -1,5 +1,5 @@
 # russian_workdays
-
+[![Gem Version](https://badge.fury.io/rb/russian_workdays.svg)](https://badge.fury.io/rb/russian_workdays)
 [![Build Status](https://travis-ci.org/heckfy/russian_workdays.svg?branch=master)](https://travis-ci.org/heckfy/russian_workdays)
 
 Производственный календарь РФ
