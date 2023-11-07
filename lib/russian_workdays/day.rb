@@ -3,9 +3,9 @@
 require "yaml"
 
 module RussianWorkdays
-  DATES = YAML.safe_load(
+  DATES = YAML.load_file(
     File.join(__dir__, 'dates.yml'),
-    permitted_classes: [Date]
+    permitted_classes: [Date, Symbol]
   ).freeze
 
   class Day
