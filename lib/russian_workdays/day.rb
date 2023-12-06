@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 require "yaml"
+require "date"
 
 module RussianWorkdays
-  DATES = YAML.load_file(File.join(__dir__, "dates.yml")).freeze
+  DATES = YAML.safe_load(File.read(File.join(__dir__, "dates.yml")), permitted_classes: [::Date, Symbol]).freeze
 
   class Day
     def initialize(date)
