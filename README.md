@@ -1,4 +1,5 @@
 # russian_workdays
+
 [![Gem Version](https://badge.fury.io/rb/russian_workdays.svg)](https://badge.fury.io/rb/russian_workdays)
 [![Build Status](https://travis-ci.org/heckfy/russian_workdays.svg?branch=master)](https://travis-ci.org/heckfy/russian_workdays)
 [![Code Climate](https://codeclimate.com/github/heckfy/russian_workdays/badges/gpa.svg)](https://codeclimate.com/github/heckfy/russian_workdays)
@@ -6,52 +7,69 @@
 Производственный календарь РФ
 
 ## Установка
+
 Выполняем в терминале:
 
-	gem install russian_workdays
-	
+    gem install russian_workdays
+
 и подгружаем:
 
 ```ruby
-require 'russian_workdays'
+require "russian_workdays"
 ```
 
 ## Использование
 
-Получить массив с выходными днями в 2014 году
+#### Класс RussianWorkdays::Collection
+
+Инициализатор принимает массив или интервал дат.
 
 ```ruby
-RussianWorkdays.holidays(2014)
+collection = RussianWorkdays::Collection.new((Date.new(2014, 2, 10)..Date.new(2014, 3, 10)))
+# Получить массив с выходными днями c 10 февраля 2014 по 10 марта 2014:
+collection.holidays
+# Получить массив с предпраздничными днями:
+collection.preholidays
+# Получить массив с рабочими днями:
+collection.works
+# Получить количество рабочих часов:
+collection.work_hours_count
+# В качестве аргумента метод work_hours_count принимает количество рабочих часов в неделю, по умолчанию это 40 часов. Получить количество рабочих часов при 36-часовой рабочей неделе:
+collection.work_hours_count(36)
 ```
 
-Получить массив с короткими днями в 2014 году
+#### Класс RussianWorkdays::Year
+
+Инициализатор принимает в качестве параметра год. Имеет те же методы что и RussianWorkdays::Collection.
 
 ```ruby
-RussianWorkdays.shorts(2014)
+collection = RussianWorkdays::Year.new(2014)
+# Получить массив с выходными днями в 2014 году:
+collection.holidays
 ```
 
-Получить массив с рабочими днями в 2014 году
+#### Класс RussianWorkdays::Month
+
+Инициализатор принимает первым параметром год, вторым - номер месяца. Имеет те же методы что и RussianWorkdays::Collection.
 
 ```ruby
-RussianWorkdays.works(2014)
+collection = RussianWorkdays::Month.new(2014, 2)
+# Получить массив с выходными днями в феврале 2014 года:
+collection.holidays
 ```
 
-Является ли дата выходным днем?
+#### Класс RussianWorkdays::Day
+
+Предназначен для работы с одной датой. В качестве параметра принимает объект класса Date.
 
 ```ruby
-RussianWorkdays.holiday?(Date.new 2014, 10, 5)
-```
-
-Является ли дата коротким днем?
-
-```ruby
-RussianWorkdays.short?(Date.new 2014, 10, 5)
-```
-
-Является ли дата рабочим днем?
-
-```ruby
-RussianWorkdays.work?(Date.new 2014, 10, 5)
+date = RussianWorkdays::Day.new(Date.new(2014, 10, 5))
+# Является ли дата выходным днем?
+date.holiday?
+# Является ли дата предпраздничным днем?
+date.preholiday?
+# Является ли дата рабочим днем?
+date.work?
 ```
 
 ## Contributing
