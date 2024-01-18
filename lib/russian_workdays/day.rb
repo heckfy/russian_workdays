@@ -3,7 +3,7 @@
 require "yaml"
 
 module RussianWorkdays
-  DATES = YAML.unsafe_load(File.join(__dir__, "dates.yml")).freeze
+  DATES = YAML.unsafe_load_file(File.join(__dir__, "dates.yml")).freeze
 
   class Day
     def initialize(date)
