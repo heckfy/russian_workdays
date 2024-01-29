@@ -2,10 +2,11 @@
 
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'russian_workdays/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "russian_workdays"
-  spec.version       = "2.6.0"
+  spec.version       = RussianWorkdays::VERSION
   spec.authors       = ["heckfy"]
   spec.email         = ["heckfyoz@gmail.com"]
   spec.summary       = "Russian workdays"
