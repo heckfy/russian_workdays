@@ -2,10 +2,11 @@
 
 lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
+require 'russian_workdays/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "russian_workdays"
-  spec.version       = "2.6.0"
+  spec.version       = RussianWorkdays::VERSION
   spec.authors       = ["heckfy"]
   spec.email         = ["heckfyoz@gmail.com"]
   spec.summary       = "Russian workdays"
@@ -18,7 +19,9 @@ Gem::Specification.new do |spec|
   spec.test_files    = spec.files.grep(%r{^(test|spec|features)/})
   spec.require_paths = ["lib"]
 
-  spec.add_development_dependency "bundler", "~> 1.6"
+  spec.required_ruby_version = '>= 2.6.3'
+
+  spec.add_development_dependency "bundler", "~> 2.4"
   spec.add_development_dependency "rake"
   spec.add_development_dependency "rspec"
 end
