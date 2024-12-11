@@ -32,8 +32,8 @@ module RussianWorkdays
 
     private
 
-      def weekend?
-        (@date.sunday? || @date.saturday?) && !DATES[@date.year][:works]&.include?(@date)
-      end
+    def weekend?
+      (@date.sunday? || @date.saturday?) && !DATES[@date.year][:works]&.include?(@date)
+    end
   end
 end
