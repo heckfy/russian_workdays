@@ -4,10 +4,10 @@ require "spec_helper"
 
 describe RussianWorkdays::Month do
   before(:all) do
-    @month = RussianWorkdays::Month.new(2024, 5)
-    @holidays = %w[2024-05-01 2024-05-09 2024-05-10]
-    @preholidays = %w[2024-05-08]
-    @works = %w[2024-05-06 2024-05-07 2024-05-08]
+    @month = RussianWorkdays::Month.new(2025, 3)
+    @holidays = %w[2025-03-08 2025-03-09]
+    @preholidays = %w[2025-03-07]
+    @works = %w[2025-03-04 2025-03-05 2025-03-06]
   end
 
   it "should return the right preholiday days" do
