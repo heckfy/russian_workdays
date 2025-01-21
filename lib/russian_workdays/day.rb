@@ -3,7 +3,7 @@
 require "yaml"
 
 module RussianWorkdays
-  DATES = YAML.load_file(File.join(__dir__, "dates.yml")).freeze
+  DATES = YAML.unsafe_load_file(File.join(__dir__, "dates.yml")).freeze
 
   class Day
     def initialize(date)
@@ -32,8 +32,8 @@ module RussianWorkdays
 
     private
 
-      def weekend?
-        @date.sunday? || @date.saturday?
-      end
+    def weekend?
+      (@date.sunday? || @date.saturday?) && !DATES[@date.year][:works]&.include?(@date)
+    end
   end
 end

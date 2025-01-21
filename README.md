@@ -72,6 +72,9 @@ date.preholiday?
 date.work?
 ```
 
+#### Обновление списка рабочих и праздничных дней на новый год
+В файле lib/russian_workdays/dates.yml содержится перечень праздничных, предпраздничных и рабочих дней на текущий год. Для каждого следующего года необходимо актуализировать данный файл.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/russian_workdays/fork )
