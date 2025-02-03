@@ -1,23 +1,26 @@
 # frozen_string_literal: true
 
-require "yaml"
+require_relative 'missing_year_error'
 
 module RussianWorkdays
-  DATES = YAML.load_file(File.join(__dir__, "dates.yml")).freeze
-
   class Day
+    attr_reader :date
+
     def initialize(date)
+      raise ArgumentError, 'Must be a Date object' unless date.is_a?(::Date)
+      raise MissingYearError, date.year unless DATES.key?(date.year)
+
       @date = date
-      raise ArgumentError, "Must be a Date object" unless @date.is_a?(::Date)
-      raise ArgumentError, "Data missing for that year" unless DATES.key?(@date.year)
     end
 
     def holiday?
-      !preholiday? && (weekend? || DATES[@date.year][:holidays].include?(@date))
+      return true if DATES[date.year][:holidays].include?(date)
+
+      !preholiday? && weekend?
     end
 
     def preholiday?
-      DATES[@date.year][:preholidays].include?(@date)
+      DATES[date.year][:preholidays].include?(date)
     end
 
     def work?
@@ -27,13 +30,18 @@ module RussianWorkdays
     def type
       return :holiday if holiday?
       return :preholiday if preholiday?
-      return :work if work?
+
+      :work if work?
+    end
+
+    def to_date
+      date
     end
 
     private
 
-      def weekend?
-        @date.sunday? || @date.saturday?
-      end
+    def weekend?
+      date.sunday? || date.saturday?
+    end
   end
 end
