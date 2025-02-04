@@ -4,7 +4,7 @@ require 'spec_helper'
 require 'date'
 
 describe RussianWorkdays::Day do
-  subject(:work?) { described_class.new(date).work? }
+  subject(:instance_of_day) { described_class.new(date) }
 
   let(:work_date) { Date.new(2014, 5, 5) }
   let(:preholiday_date) { Date.new(2014, 2, 24) }
@@ -15,7 +15,7 @@ describe RussianWorkdays::Day do
       let(:date) { 'string' }
 
       it 'raise ArgumentError' do
-        expect { described_class.new(date) }.to raise_error(ArgumentError, /Must be a Date object/)
+        expect { instance_of_day }.to raise_error(ArgumentError, /Must be a Date object/)
       end
     end
 
@@ -23,7 +23,7 @@ describe RussianWorkdays::Day do
       let(:date) { Date.new(1990, 1, 1) }
 
       it 'raise MissingYearError' do
-        expect { described_class.new(date) }
+        expect { instance_of_day }
           .to raise_error(RussianWorkdays::MissingYearError, /Data missing for that year: 1990/)
       end
     end
@@ -34,7 +34,7 @@ describe RussianWorkdays::Day do
       let(:date) { work_date }
 
       it 'return true' do
-        is_expected.to eq(true)
+        expect(instance_of_day.work?).to eq(true)
       end
     end
 
@@ -42,7 +42,7 @@ describe RussianWorkdays::Day do
       let(:date) { preholiday_date }
 
       it 'return true' do
-        is_expected.to eq(true)
+        expect(instance_of_day.work?).to eq(true)
       end
     end
 
@@ -50,7 +50,7 @@ describe RussianWorkdays::Day do
       let(:date) { holiday_date }
 
       it 'return false' do
-        is_expected.to eq(false)
+        expect(instance_of_day.work?).to eq(false)
       end
     end
   end
@@ -60,7 +60,7 @@ describe RussianWorkdays::Day do
       let(:date) { work_date }
 
       it 'return true' do
-        expect(RussianWorkdays::Day.new(date).preholiday?).to eq(false)
+        expect(instance_of_day.preholiday?).to eq(false)
       end
     end
 
@@ -68,7 +68,7 @@ describe RussianWorkdays::Day do
       let(:date) { preholiday_date }
 
       it 'return true' do
-        expect(RussianWorkdays::Day.new(date).preholiday?).to eq(true)
+        expect(instance_of_day.preholiday?).to eq(true)
       end
     end
 
@@ -76,7 +76,7 @@ describe RussianWorkdays::Day do
       let(:date) { holiday_date }
 
       it 'return false' do
-        expect(RussianWorkdays::Day.new(date).preholiday?).to eq(false)
+        expect(instance_of_day.preholiday?).to eq(false)
       end
     end
   end
@@ -86,7 +86,7 @@ describe RussianWorkdays::Day do
       let(:date) { work_date }
 
       it 'return true' do
-        expect(RussianWorkdays::Day.new(date).holiday?).to eq(false)
+        expect(instance_of_day.holiday?).to eq(false)
       end
     end
 
@@ -94,7 +94,7 @@ describe RussianWorkdays::Day do
       let(:date) { preholiday_date }
 
       it 'return true' do
-        expect(RussianWorkdays::Day.new(date).holiday?).to eq(false)
+        expect(instance_of_day.holiday?).to eq(false)
       end
     end
 
@@ -102,7 +102,7 @@ describe RussianWorkdays::Day do
       let(:date) { holiday_date }
 
       it 'return false' do
-        expect(RussianWorkdays::Day.new(date).holiday?).to eq(true)
+        expect(instance_of_day.holiday?).to eq(true)
       end
     end
   end
@@ -112,7 +112,7 @@ describe RussianWorkdays::Day do
       let(:date) { work_date }
 
       it 'return :work' do
-        expect(RussianWorkdays::Day.new(date).type).to eq(:work)
+        expect(instance_of_day.type).to eq(:work)
       end
     end
 
@@ -120,7 +120,7 @@ describe RussianWorkdays::Day do
       let(:date) { preholiday_date }
 
       it 'return :preholiday' do
-        expect(RussianWorkdays::Day.new(date).type).to eq(:preholiday)
+        expect(instance_of_day.type).to eq(:preholiday)
       end
     end
 
@@ -128,7 +128,7 @@ describe RussianWorkdays::Day do
       let(:date) { holiday_date }
 
       it 'return :holiday' do
-        expect(RussianWorkdays::Day.new(date).type).to eq(:holiday)
+        expect(instance_of_day.type).to eq(:holiday)
       end
     end
   end
